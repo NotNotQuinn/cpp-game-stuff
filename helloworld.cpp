@@ -1,10 +1,13 @@
 #include <iostream>
 
-double mult(double num1, double num2) {
+
+double mult(double num1, double num2)
+{
     return num1 * num2;
 }
 
-int main() {
+int main()
+{
     int fav_int;
     double rand_num;
     double lucky_num;
@@ -18,7 +21,8 @@ int main() {
 
     if (fav_int == 30) {  // not actually my favorite number, I dont think I have one.
         std::cout << "Very good, very good, " << fav_int << " is also my favorite!" << std::endl << std::endl;
-    } else {
+    }
+    else {
         std::cout << "Not bad, not bad, " << fav_int << " is a very good number!" << std::endl << std::endl;
     }
 
@@ -38,7 +42,8 @@ int main() {
 
     if (lucky_num == 7) {
         std::cout << "Your lucky number for this week is " << lucky_num << ", congratulations! Thats a very lucky number." << std::endl;
-    } else {
+    }
+    else {
         std::cout << "Your lucky number for this week is " << lucky_num << ", I dont think you will find bad luck!" << std::endl;
     }
     std::cout << "Okay thats all for today!! Cya later, hopefully soon." << std::endl;
