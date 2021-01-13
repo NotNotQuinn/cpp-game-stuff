@@ -1,18 +1,19 @@
 #include <iostream>
+//#include <optional>
 
 int main()
 {
-    bool pressed = false;
-    unsigned char a;  // cant really type it..
-    std::cout << "Press Enter to continue..." << std::flush;
-    while(true)
-    {
-        std::cin >> a;
-        if(a != 200 && pressed)
-        {
-            return 0;
-        }
-    }
+    bool sent = false;
+    optional<sent> input;
 
+    do 
+    {
+        if (!sent) 
+        {
+            std::cout << "Press a key to continue...";
+            sent = true;
+        }
+    } while (std::cin.get() != '\n');
+    return 0;
 }
 
