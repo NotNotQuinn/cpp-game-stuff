@@ -7,6 +7,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include "menu_selection.h"
 
 
 using std::vector;
@@ -15,12 +16,14 @@ using std::string;
 
 bool user_quit = false;
 bool user_played_any_game = false;
+bool user_played_guess_num = false;
 bool entered_menu = false;
 int menu_selection = -1;
 
 void play_sudoku();
 void play_guess_num();
 bool vector_contains(vector<int>, int);
+int menu_choice(vector<string>, vector<bool>, string);
 
 int main()
 {   
@@ -46,15 +49,6 @@ int main()
         entered_menu = true;
 
         vector<int> valid_menu_options = {0, 1, 2};
-        std::cout
-            << std::endl
-            << "   [0]    Exit application"  << std::endl
-            << "   [1]*   Sudoku"  << std::endl
-            << "   [2]*   Guess the number"  << std::endl
-            << std::endl
-            << "* = planned" << std::endl
-            << std::endl
-            << "Please select one: ";
 
         std::cin >> menu_selection; // stops for input
 
@@ -106,17 +100,6 @@ int main()
 
 }
 
-bool vector_contains(vector<int> check_in_me, int value)
-{
-    for(int i = 0; i > check_in_me.size(); i++)
-    {
-        if (check_in_me[i] == value)
-        {
-            return true;
-        }
-    }
-    return false;
-}
 
 void play_sudoku()
 {
@@ -128,5 +111,14 @@ void play_sudoku()
 void play_guess_num()
 {
     user_played_any_game = true;
-    // not implemented
+
+    int answer = rand() % 501;  // int 0 to 500
+    vector<int> guesses;
+    string back = user_played_guess_num ? "" : " back";
+
+    std::cout << "Welcome" << back << " to the guessing game!" << std::endl;
+
+
+
+    user_played_guess_num = true;
 }
