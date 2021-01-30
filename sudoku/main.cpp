@@ -4,9 +4,9 @@
 
 #include <string>
 #include <vector>
-#include <iostream>
-#include <ctime>
-#include <cstdlib>
+#include <iostream>  // input/output
+#include <ctime>     // time stuff, for seeding randomness
+#include <cstdlib>   // for randomness
 #include "menu_selection.h"
 
 
@@ -15,6 +15,7 @@ using std::string;
 
 
 bool user_quit = false;
+vector<bool> games_played = {false /* menu */, false /* sudoku */, false /* guess_num */};
 bool user_played_any_game = false;
 bool user_played_guess_num = false;
 bool entered_menu = false;
@@ -22,8 +23,7 @@ int menu_selection = -1;
 
 void play_sudoku();
 void play_guess_num();
-bool vector_contains(vector<int>, int);
-int menu_choice(vector<string>, vector<bool>, string);
+
 
 int main()
 {   
@@ -48,25 +48,10 @@ int main()
         }
         entered_menu = true;
 
-        vector<int> valid_menu_options = {0, 1, 2};
+        vector<string> valid_menu_options = {"Quit", "Sudoku", "Guess a number"};
 
-        std::cin >> menu_selection; // stops for input
+        menu_selection = menu_choice(valid_menu_options, {0, 1, 1}, "Planned");
 
-
-        while ( !vector_contains(valid_menu_options, menu_selection) )
-        {
-            std::cout
-                << "Please select a valid option: ";
-            if(! std::cin >> menu_selection)  // doesnt stop??? why??????
-            {
-                std::cin.clear();
-                std::cin.ignore(10000, '\n');
-                // they typed a letter, sooooooooooooooo
-                // it would break because were trying to get an integer and cin
-                // wont let us do that, leaving the string in the unput stream
-                // and restarting, then printing over and over
-            }
-        }
 
         switch (menu_selection)
         {

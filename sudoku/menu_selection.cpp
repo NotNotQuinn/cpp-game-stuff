@@ -11,7 +11,7 @@
 using std::vector;
 using std::string;
 
-
+// a better function name could be `user_choose`
 int menu_choice(vector<string> options, vector<bool> flagged/* ={} */, string flag_means/* ="" */)
 {
     /**
@@ -99,8 +99,21 @@ int menu_choice(vector<string> options, vector<bool> flagged/* ={} */, string fl
 }
 
 
-
+// int
 bool vector_contains(vector<int> check_in_me, int value)
+{
+    for(int i = 0; i < check_in_me.size(); i++)
+    {
+        if (check_in_me[i] == value)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+// bool
+bool vector_contains(vector<bool> check_in_me, bool value)
 {
     for(int i = 0; i < check_in_me.size(); i++)
     {

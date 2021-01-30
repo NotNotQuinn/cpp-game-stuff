@@ -1,5 +1,4 @@
-menu_selection: menu_selection.o
-	g++ menu_selection.o -o menu_selection -std=c++11
-
-menu_selection.o: menu_selection.cpp
-	g++ -c menu_selection.cpp -std=c++11
+quinns_game_collection: sudokuboard.o
+	g++ sudokuboard.cpp -o quinns_game_collection
+sudokuboard.o: sudokuboard.cpp
+	g++ -c sudokuboard.cpp
