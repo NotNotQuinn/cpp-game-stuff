@@ -3,6 +3,7 @@
 
 
 #include <string>
+#include <iostream>
 
 
 class Game {
@@ -11,6 +12,7 @@ class Game {
         static int play_count;
     public:
         std::string name;
+        Game();
         Game(std::string name);
         void increment_play_count();
 };
