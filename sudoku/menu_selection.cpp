@@ -11,6 +11,36 @@
 using std::vector;
 using std::string;
 
+
+/*
+
+TODO(?):
+    -   When the flagged vector is all falses, dont show flags
+
+    -   Take in the prompt and resend it as well as the options on % 5 
+
+    -   Add a note thing, to give more info about a group of options
+
+    -   Keep it so the only NEEDED thing is the options
+
+    -   (built in?) letter options, q to quit?, what do we return then? -1?
+            opt in? e.g. settings = {false, false, false, false, false} defalts?
+            configurable? I would need a hashtable, I dont know those in cpp yet tho
+                e.g. letter_options = {'q': "Quit", 'u': "urmom", 'l', "aughing Out Loud"}
+                would it be displayed in one of these ways?
+                    -   *[L]aughing Out Loud
+                        *[Q]Quit
+                        *[U]urmom
+                    or
+                    -   *[L]    aughing Out Loud
+                        *[Q]    Quit
+                        *[U]    urmom
+                would we force all caps? it would look nicer
+                how would we check if there arent l and L as options?
+
+*/
+
+
 // a better function name could be `user_choose`
 int menu_choice(vector<string> options, vector<bool> flagged/* ={} */, string flag_means/* ="" */)
 {
@@ -31,7 +61,12 @@ int menu_choice(vector<string> options, vector<bool> flagged/* ={} */, string fl
     if(options.size() != flagged.size() && flags_enabled)
     {
         throw "Options and flagged peramiters must be of the same size";  
-        // no clue if this is how this works, or if it does work at all
+        // it shows this:
+
+        // terminate called after throwing an instance of 'char const*'
+        // Aborted
+
+        // not the best but it works.
     }
 
     std::cout << std::endl;  // one blank line at the start
@@ -75,25 +110,20 @@ int menu_choice(vector<string> options, vector<bool> flagged/* ={} */, string fl
         {
             if (vector_contains<int>(valid_options, selection))
             {
-                std::cin.clear();
-                std::cin.ignore(10000, '\n');
                 return selection;
             }
         }
         else
         {
             selection = -1;
-            std::cin.clear();
-            std::cin.ignore(10000, '\n');
-            // they typed a letter, sooooooooooooooo
-            // it would break because were trying to get an integer and cin
-            // wont let that happen, leaving the string in the unput stream
-            // and restarting, then printing over and over
-
-            // this only clears 10k chars but I doubt someoen will do that
-            // (although I can imagine it COULD happen)
         }
 
+        // always clear after input,
+        // this makes sure if someone typed "0 0 0 0 0 0 0 0 0" 
+        // the first 0 would be captured, and the rest get cleared.
+        // rather than being left in the input buffer
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
         loops++;
     }
     while(!vector_contains<int>(valid_options, selection));
