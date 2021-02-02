@@ -7,7 +7,8 @@
 
 
 int menu_choice(std::vector<std::string> options, std::vector<bool> flagged = {}, std::string flag_means = "");
-bool vector_contains(std::vector<int> check_in_me, int value);
+template <typename T>
+bool vector_contains(std::vector<T> check_in_me, T value);
 
 
 #endif // MENU_SELECTION

@@ -73,7 +73,7 @@ int menu_choice(vector<string> options, vector<bool> flagged/* ={} */, string fl
         
         if(std::cin >> selection)
         {
-            if (vector_contains(valid_options, selection))
+            if (vector_contains<int>(valid_options, selection))
             {
                 return selection;
             }
@@ -94,26 +94,13 @@ int menu_choice(vector<string> options, vector<bool> flagged/* ={} */, string fl
 
         loops++;
     }
-    while(!vector_contains(valid_options, selection));
+    while(!vector_contains<int>(valid_options, selection));
     return selection;
 }
 
 
-// int
-bool vector_contains(vector<int> check_in_me, int value)
-{
-    for(int i = 0; i < check_in_me.size(); i++)
-    {
-        if (check_in_me[i] == value)
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-// bool
-bool vector_contains(vector<bool> check_in_me, bool value)
+template <typename T>
+bool vector_contains(vector<T> check_in_me, T value)
 {
     for(int i = 0; i < check_in_me.size(); i++)
     {

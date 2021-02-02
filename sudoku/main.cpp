@@ -15,7 +15,8 @@ using std::string;
 
 
 bool user_quit = false;
-vector<bool> games_played = {false /* menu */, false /* sudoku */, false /* guess_num */};
+vector<bool> games_played = {false, false, false};
+vector<string> games_list = {"Menu", "Sudoku", "Guess Num"};
 bool user_played_any_game = false;
 bool user_played_guess_num = false;
 bool entered_menu = false;
