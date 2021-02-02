@@ -75,6 +75,8 @@ int menu_choice(vector<string> options, vector<bool> flagged/* ={} */, string fl
         {
             if (vector_contains<int>(valid_options, selection))
             {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
                 return selection;
             }
         }
