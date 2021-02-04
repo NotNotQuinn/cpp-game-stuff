@@ -124,6 +124,7 @@ int menu_choice(vector<string> options, vector<bool> flagged/* ={} */, string fl
         // rather than being left in the input buffer
         std::cin.clear();
         std::cin.ignore(10000, '\n');
+        
         loops++;
     }
     while(!vector_contains<int>(valid_options, selection));
