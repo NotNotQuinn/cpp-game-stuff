@@ -3,8 +3,9 @@
 #include "game.h"
 #include "sudoku.h"
 
+
 int main()
 {
     SudokuGame sudoku;
-    sudoku.play();
+    std::cout << sudoku << std::endl;
 }

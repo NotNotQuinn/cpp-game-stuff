@@ -59,6 +59,12 @@
         "xutility": "cpp",
         "ctime": "cpp",
         "list": "cpp",
-        "xhash": "cpp"
+        "xhash": "cpp",
+        "regex": "cpp",
+        "locale": "cpp",
+        "xlocbuf": "cpp",
+        "xlocmes": "cpp",
+        "xlocmon": "cpp",
+        "xloctime": "cpp"
     }
 }
