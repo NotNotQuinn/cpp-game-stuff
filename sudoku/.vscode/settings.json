@@ -65,6 +65,12 @@
         "xlocbuf": "cpp",
         "xlocmes": "cpp",
         "xlocmon": "cpp",
-        "xloctime": "cpp"
+        "xloctime": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp",
+        "condition_variable": "cpp",
+        "map": "cpp",
+        "ratio": "cpp",
+        "shared_mutex": "cpp"
     }
 }

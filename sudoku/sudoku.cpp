@@ -3,15 +3,29 @@
 #include <iostream>
 #include <regex>
 #include <iterator>
+#include "menu_selection.h"
 
 using std::vector;
 using std::string;
 
 
 void SudokuGame::play()
-{
+{   
+    int loops = 0;
+    bool game_end = false;
     std::cout << "lol, welcome to danksudoku.\n";
+    do
+    {
+        std::cout << *this << std::endl;
+        if (loops != 0)
+        {
+            std::cout << "nice move, I think, lol.";
+        }
+        string choice = choose_sudoku_point();
+    }while(!game_end);
+
 }
+
 
 void SudokuGame::set_square( int row, int col, int value )
 {
@@ -32,7 +46,7 @@ string SudokuGame::get_board_display_string()
         for ( int value : board[i] )
         {
             string _value_str(1, '0' + value);
-            string display_value = value == 0 ? " " : (string) _value_str ;
+            string display_value = value == 0 ? " " : (string) _value_str;
             string vert = "|";
             out += vert + " " + (string) display_value + " ";
         }
@@ -74,6 +88,7 @@ SudokuGame::SudokuGame()
 
 }
 
+
 vector<string> split_string(string in_pattern, string& content)
 {
     vector<string> split_content;
@@ -82,4 +97,63 @@ vector<string> split_string(string in_pattern, string& content)
     copy( std::__cxx11::sregex_token_iterator(content.begin(), content.end(), pattern, -1),
     std::__cxx11::sregex_token_iterator(),back_inserter(split_content));  
     return split_content;
+}
+
+
+std::string SudokuGame::choose_sudoku_point()
+{
+    int bad_loops = 0;
+    int loops = 0;
+    std::string _choice;
+    std::map<string, string> input_commands;
+    std::map<string, string> input_commands_aliases;
+    input_commands.insert(std::pair<string, string>("help", "This is a sample help information."));
+    input_commands.insert(std::pair<string, string>("?", "help"));
+
+    std::regex valid_sudoku_option (R"(^[a-i][1-9]$)");
+    do
+    {
+        if (( bad_loops % 3 == 0 || bad_loops == 1 ) && bad_loops != 0)
+        {
+            std::cout << "instructoins!!!" << std::endl;
+        }
+
+        if (bad_loops == 0)
+        {
+            std::cout << "Please select one (\"/?\" for help): ";
+        }
+        else
+        {
+            std::cout << "Please select a valid option: ";
+        }
+
+        if(std::cin >> _choice)
+        {
+            if (std::regex_match (_choice, valid_sudoku_option) /* _choice matches R"(^[a-i][1-9]$)" */ )
+            {
+                return _choice;
+            }
+            else if (_choice == "/?" || _choice == "/help")
+            {
+                std::cout << "This is a sample help information." << std::endl;
+            }
+            else if (_choice == "/q" || _choice == "/quit")
+            {
+                // leave game, dont count as win or loss
+            }
+            else
+            {
+                bad_loops++;
+            }
+        }
+        else
+        {
+            _choice = "";
+            bad_loops++;
+        }
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+        loops++;
+    }
+    while(true);
 }

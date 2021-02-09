@@ -28,6 +28,7 @@ class SudokuGame : public Game
         {0,0,0,0,0,0,0,0,0},\
         {0,0,0,0,0,0,0,0,0},\
         {0,0,0,0,0,0,0,0,0}};
+        static std::string choose_sudoku_point();
 
     public:
         vector<vector<int>> /* an integer vector vector, a list of lists if you will */ get_board();
@@ -36,6 +37,7 @@ class SudokuGame : public Game
         void play();
         string get_board_display_string();
         SudokuGame();
+        // rewind 1 move? but store all moves.
 };
 
 

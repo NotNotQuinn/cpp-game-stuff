@@ -7,5 +7,5 @@
 int main()
 {
     SudokuGame sudoku;
-    std::cout << sudoku << std::endl;
+    sudoku.play();
 }

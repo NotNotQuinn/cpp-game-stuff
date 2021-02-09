@@ -9,5 +9,6 @@ o/menu_selection.o: menu_selection.cpp
 	g++ -c menu_selection.cpp -o o/menu_selection.o
 o/sudoku.o: sudoku.cpp
 	g++ -c sudoku.cpp -o o/sudoku.o
+
 clean:
 	rm o/*.o testgame
