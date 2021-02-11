@@ -29,10 +29,11 @@ class SudokuGame : public Game
         {0,0,0,0,0,0,0,0,0},\
         {0,0,0,0,0,0,0,0,0}};
         static std::string choose_sudoku_point();
+        std::pair<int, int> resolve_sudoku_str(string str);
 
     public:
         vector<vector<int>> /* an integer vector vector, a list of lists if you will */ get_board();
-        void set_square(int row, int col, int value);
+    void set_square( const int row, const int col, const int value );
         int get_square(int row, int col);
         void play();
         string get_board_display_string();
